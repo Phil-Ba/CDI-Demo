@@ -1,7 +1,7 @@
-package at.bayava.dao;
+package interceptors;
 
-import at.bayava.dao.interceptors.MyAnnotation;
-import at.bayava.dao.interceptors.MyInterceptor;
+import at.bayava.interceptors.MyInterceptor;
+import at.bayava.interceptors.MyInterceptorAnnotation;
 import org.jglue.cdiunit.AdditionalClasses;
 import org.jglue.cdiunit.CdiRunner;
 import org.junit.Test;
@@ -22,18 +22,16 @@ public class MyInterceptorTest {
 	@Inject
 	TestClass testClass;
 
-
 	@Test
-	public void testInterception(){
+	public void testInterception() {
 		String result = testClass.testMethod();
 		System.out.println(result);
-		assertThat( result, containsString("intercepted"));
+		assertThat(result, containsString("intercepted"));
 	}
-
 
 	static class TestClass {
 
-		@MyAnnotation
+		@MyInterceptorAnnotation
 		public String testMethod() {
 			return "testMethod";
 		}
