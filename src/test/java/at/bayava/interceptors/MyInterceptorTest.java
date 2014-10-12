@@ -1,7 +1,5 @@
-package interceptors;
+package at.bayava.interceptors;
 
-import at.bayava.interceptors.MyInterceptor;
-import at.bayava.interceptors.MyInterceptorAnnotation;
 import org.jglue.cdiunit.AdditionalClasses;
 import org.jglue.cdiunit.CdiRunner;
 import org.junit.Test;

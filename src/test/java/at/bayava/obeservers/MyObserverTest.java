@@ -1,6 +1,6 @@
-package oberservers;
+package at.bayava.obeservers;
 
-import at.bayava.dao.at.bayava.oberservers.MyObserver;
+import at.bayava.observers.MyObserver;
 import at.bayava.qualifiers.MyNamed;
 import org.jglue.cdiunit.CdiRunner;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package at.bayava.dao.at.bayava.oberservers;
+package at.bayava.observers;
 
 import at.bayava.qualifiers.MyNamed;
 
