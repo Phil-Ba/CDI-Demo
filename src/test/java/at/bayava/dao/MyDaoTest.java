@@ -10,6 +10,7 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 
 /**
+ * Simple Cdi-Unit showcase
  * Created by pbayer on 10.10.2014.
  */
 
@@ -20,6 +21,7 @@ public class MyDaoTest {
 	MyDao myDao;
 
 	@Test
+	//Lets make sure CdiRuner works
 	public void test() {
 		String stuff = myDao.doStuff();
 		System.out.println(stuff);

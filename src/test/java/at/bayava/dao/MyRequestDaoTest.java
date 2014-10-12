@@ -2,7 +2,6 @@ package at.bayava.dao;
 
 import org.jboss.weld.context.ContextNotActiveException;
 import org.jglue.cdiunit.CdiRunner;
-import org.jglue.cdiunit.ContextController;
 import org.jglue.cdiunit.InRequestScope;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,30 +14,29 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by pbayer on 10.10.2014.
  */
-
 @RunWith(CdiRunner.class)
 public class MyRequestDaoTest {
 
 	@Inject
-	ContextController contextController; //Obtain an instance of the context controller.
-
-	@Inject
-	MyRequestDao myRequestDao;
+	//this dao is request scoped
+			MyRequestDao myRequestDao;
 
 	@Test
 	@InRequestScope
-	public void test2() {
+	//This test should work, since the InRequestScope annotation ensures that the test takes place in a request
+	public void testInjectionWithRequest() {
 		String stuff = myRequestDao.doStuff();
 		System.out.println(stuff);
 		assertThat(stuff, containsString("MyRequestDao"));
 	}
 
 	@Test(expected = ContextNotActiveException.class)
-	public void test() {
+	//Without the InRequestScope annotation  this test should throw an exception,
+	// since no request is active and the object to be injected is request scoped
+	public void testInjectionWithoutRequest() {
 		String stuff = myRequestDao.doStuff();
 		System.out.println(stuff);
 		assertThat(stuff, containsString("MyRequestDao"));
 	}
-
 
 }
