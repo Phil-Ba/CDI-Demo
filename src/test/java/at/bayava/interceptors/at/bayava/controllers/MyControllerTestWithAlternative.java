@@ -43,7 +43,7 @@ public class MyControllerTestWithAlternative {
 
 	class MyTestDao extends MyDao {
 
-		public static final String MY_TEST_DAO_DEFAULT_STRING = "notTestString";
+		public static final String MY_TEST_DAO_DEFAULT_STRING = "notFooboar";
 
 		private String stuffString = MY_TEST_DAO_DEFAULT_STRING;
 

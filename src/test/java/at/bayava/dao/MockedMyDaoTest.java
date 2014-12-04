@@ -9,7 +9,8 @@ import org.mockito.Mock;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -19,6 +20,8 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(CdiRunner.class)
 public class MockedMyDaoTest {
+
+	public static final String DEFAULT_MOCK_RETURN = "MyMockedDao does stuff!";
 
 	@Inject
 	MyDao myDao;
@@ -36,7 +39,7 @@ public class MockedMyDaoTest {
 	 */
 	@Before
 	public void setUp() {
-		when(mockedDao.doStuff()).thenReturn("MyMockedDao does stuff!");
+		when(mockedDao.doStuff()).thenReturn(DEFAULT_MOCK_RETURN);
 	}
 
 
@@ -44,10 +47,18 @@ public class MockedMyDaoTest {
 	 * Tests if the mocked object will be injected
 	 */
 	@Test
-	public void test() {
+	public void testMockInjected() {
 		String stuff = myDao.doStuff();
 		System.out.println(stuff);
-		assertThat(stuff, containsString("MyMockedDao"));
+
+		assertThat(stuff, is(DEFAULT_MOCK_RETURN));
+	}
+
+	public void testDefaultDaoNotInjected() {
+		String stuff = myDao.doStuff();
+		System.out.println(stuff);
+
+		assertThat(stuff, not(MyDao.DEFAULT_DO_STUFF_RETURN));
 	}
 
 }

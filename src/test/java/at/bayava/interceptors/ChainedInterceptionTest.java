@@ -17,8 +17,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(CdiRunner.class)
 //We need to tell cdi-unit about these classes, since they arent directly referenced in the test.
 //The order als determines the order of interception(analog to beans.xml)
-@AdditionalClasses({MyInceptionInterceptor.class, MyInterceptor.class})
-public class MyInceptionTest {
+@AdditionalClasses({MyOtherInterceptor.class, MyInterceptor.class})
+public class ChainedInterceptionTest {
 
 	@Inject
 	TestClass testClass;
@@ -30,7 +30,7 @@ public class MyInceptionTest {
 	public void testChainedInterception() {
 		String result = testClass.testInterceptedMethod();
 		System.out.println(result);
-		assertThat(result, allOf(containsString("intercepted"), containsString("inception")));
+		assertThat(result, allOf(containsString("intercepted"), containsString("otherInterceptor")));
 	}
 
 	/**
@@ -48,7 +48,8 @@ public class MyInceptionTest {
 	 */
 	static class TestClass {
 
-		//this method should be intercepted since its annotated with an interceptor binding annotation
+		//this method should be intercepted by multiple interceptors since its annotated with an interceptor binding annotation
+		//which is bound to mutiple interceptors
 		@MyChainedInterceptorAnnotation
 		public String testInterceptedMethod() {
 			return "testReturnValue";

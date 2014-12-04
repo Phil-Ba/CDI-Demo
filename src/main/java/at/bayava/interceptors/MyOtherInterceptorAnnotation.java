@@ -11,6 +11,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MyInceptionAnnotation {
+public @interface MyOtherInterceptorAnnotation {
 
 }

@@ -9,8 +9,8 @@ import java.lang.annotation.RetentionPolicy;
  * interceptors in the beans.xml.
  * Created by pbayer on 10.10.2014.
  */
+@MyOtherInterceptorAnnotation
 @MyInterceptorAnnotation
-@MyInceptionAnnotation
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyChainedInterceptorAnnotation {

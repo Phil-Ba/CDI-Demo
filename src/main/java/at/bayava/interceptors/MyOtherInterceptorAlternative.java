@@ -11,8 +11,8 @@ import javax.interceptor.InvocationContext;
 @Interceptor
 //this is the annotation, which marks methods/classes which should be intercepted
 //(the annotation must be annotated with @Interceptorbinding)
-@MyInceptionAnnotationAlternative
-public class MyInceptionInterceptorAlternative {
+@MyOtherInterceptorAnnotationAlternative
+public class MyOtherInterceptorAlternative {
 
 	/**
 	 * @param ctx invocationContext, ie. the method that is being intercepted
@@ -22,13 +22,11 @@ public class MyInceptionInterceptorAlternative {
 	@AroundInvoke
 	Object aroundInvoke(InvocationContext ctx) throws Exception {
 		//tell the method the proceed, and get the return value
-		System.out.println("Interception interceptor alternative start");
 		Object result = ctx.proceed();
 		//if its a string, lets modify it
 		if (result instanceof String) {
-			result = result + ". This is alternative inception!";
+			result = result + ". This is alternative otherInterceptor!";
 		}
-		System.out.println("Interception interceptor alternative end");
 		return result;
 	}
 
