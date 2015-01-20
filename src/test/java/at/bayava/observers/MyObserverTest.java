@@ -1,6 +1,5 @@
-package at.bayava.obeservers;
+package at.bayava.observers;
 
-import at.bayava.observers.MyObserver;
 import at.bayava.qualifiers.MyNamed;
 import org.jglue.cdiunit.CdiRunner;
 import org.junit.Test;
@@ -34,7 +33,7 @@ public class MyObserverTest {
 	@Inject
 	@Named("John")
 	//note how the value is different from the observer method
-	@MyNamed("whatverIdontCare")
+	@MyNamed("somethingdifferent")
 	Event<String> johnMyNamedEvent;
 
 	/**

@@ -1,4 +1,4 @@
-package at.bayava.interceptors.at.bayava.controllers;
+package at.bayava.controllers;
 
 import at.bayava.dao.MyDao;
 
